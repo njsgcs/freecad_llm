@@ -100,7 +100,7 @@ def tool_call(user_say):
 *如果找不到想自创代码块记得用函数赋值或者函数调用,不要用if这种复杂命令*
 **************************单条纯函数代码*********************************     
 
-函数代码:FreeCAD.newDocument()  
+函数代码:doc=FreeCAD.newDocument()  
 描述:此方法可选输入文档名称 
 注意:在执行任务前要先确保有Document文档,没有需要创建一个
 例子:doc= FreeCAD.newDocument("new_Document")
