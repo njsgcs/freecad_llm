@@ -1,5 +1,5 @@
 
-import importlib
+
 import ast
 
 def parse_input(input_str):
@@ -150,6 +150,9 @@ class Res_Objects:
             if  method_name:
                 parts = method_name.split('.')
                 method = self.get_object(parts[0])
+
+                import importlib
+                
                 if not method:    method = importlib.import_module(parts[0])
                 
                 for part in parts[1:]:method = getattr(method, part, None)
