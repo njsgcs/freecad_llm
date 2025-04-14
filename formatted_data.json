@@ -1,28 +1,39 @@
 {
-    "id": "40295e38-e80d-4759-a528-673d461f7c6a",
+    "id": "c2804e1e-bdf2-4491-a1a3-82ce9a7be43e",
     "object": "chat.completion",
-    "created": 1744448041,
+    "created": 1744602323,
     "model": "deepseek-chat",
     "choices": [
         {
             "index": 0,
             "message": {
                 "role": "assistant",
-                "content": "执行了将立方体（cube）的长度（Length）设置为30的操作。当前文档中包含两个对象：'doc'（文档）和'cube'（基本立方体图元）。"
+                "content": "",
+                "tool_calls": [
+                    {
+                        "index": 0,
+                        "id": "call_0_d59a5bb0-e2a3-4680-9d41-7f0047432510",
+                        "type": "function",
+                        "function": {
+                            "name": "execute",
+                            "arguments": "{\"function\":\"doc=FreeCAD.newDocument()\"}"
+                        }
+                    }
+                ]
             },
             "logprobs": null,
-            "finish_reason": "stop"
+            "finish_reason": "tool_calls"
         }
     ],
     "usage": {
-        "prompt_tokens": 47,
-        "completion_tokens": 39,
-        "total_tokens": 86,
+        "prompt_tokens": 956,
+        "completion_tokens": 23,
+        "total_tokens": 979,
         "prompt_tokens_details": {
-            "cached_tokens": 0
+            "cached_tokens": 896
         },
-        "prompt_cache_hit_tokens": 0,
-        "prompt_cache_miss_tokens": 47
+        "prompt_cache_hit_tokens": 896,
+        "prompt_cache_miss_tokens": 60
     },
     "system_fingerprint": "fp_3d5141a69a_prod0225"
 }

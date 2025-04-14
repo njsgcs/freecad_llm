@@ -187,7 +187,7 @@ FreeCADGui.SendMsgToActiveView("ViewFit")
         commands=json.loads(arguments)["function"]
         print("ai调用命令:\n"+commands)
         objects_information= execute_commands(commands)  
-        print("objects_information:"+objects_information)
+      
         tool_promt={
                 "role": "tool",
                 "content":objects_information,
@@ -236,13 +236,13 @@ def execute_commands(commands) :
              
 async def main2():      
     commands="""
-
-doc = FreeCAD.newDocument("Cube_Document") 
-FreeCADGui.activateWorkbench("SMWorkbench")
-FreeCADGui.runCommand('SheetMetal_BaseShape',0)
-FreeCADGui.Selection.addSelection('Cube_Document','Body','BaseShape.Edge7',9,-9,1)  
-FreeCADGui.runCommand('SheetMetal_AddWall',0)
-FreeCADGui.SendMsgToActiveView("ViewFit") 
+doc= FreeCAD.newDocument("new_Document")
+cube = doc.addObject("Part::Box", "Cube")
+cube.Length = 30
+cube.Width = 50
+cube.Height = 60
+doc.recompute()
+FreeCADGui.SendMsgToActiveView("ViewFit")
 
 """ 
     execute_commands(commands)
@@ -250,4 +250,4 @@ FreeCADGui.SendMsgToActiveView("ViewFit")
  
       
 if __name__ == "__main__":
-     asyncio.run(main())
+     asyncio.run(main2())

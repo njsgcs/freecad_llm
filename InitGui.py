@@ -8,7 +8,7 @@ class StartRPCServerCommand:
         import queue
         from PySide2.QtCore import QTimer
         import threading
-        from res_objects import Res_Objects
+       
         # 定义一个类来封装API方法
         class FreeCADRPC:
             """RPC server for FreeCAD"""
@@ -16,14 +16,17 @@ class StartRPCServerCommand:
 
 
             def execute_commands(self,commands):
-                return res_objects.handle_function(
-                   rpc_request_queue, rpc_response_queue, commands
-                )
-
+                    def task():
+        
+                      exec(commands, globals())
+                    rpc_request_queue.put(task)
+                    return   rpc_response_queue.get()
+            
+         
         # GUI task queue
         rpc_request_queue = queue.Queue()
         rpc_response_queue = queue.Queue()
-        res_objects = Res_Objects()
+        
         # 启动 RPC 服务器
         host = "localhost"
         port = 8000
